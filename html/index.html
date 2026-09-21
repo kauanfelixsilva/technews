@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNews</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <div class="cabecalho-topo">
+
+            <div>
+                <h1>TechNews</h1>
+                <p>Informação e tecnologia em um só lugar.</p>
+            </div>
+
+            <button class="menu-hamburguer"
+                    id="botao-menu"
+                    aria-label="Abrir menu">
+                ☰
+            </button>
+
+        </div>
+
+        <nav id="menu">
+
+            <a href="#/">Início</a>
+
+            <div class="menu-dropdown">
+
+                <a href="#/categorias">Categorias ▾</a>
+
+                <div class="dropdown">
+                    <a href="#/categorias">Inteligência Artificial</a>
+                    <a href="#/categorias">Programação</a>
+                    <a href="#/categorias">Segurança Digital</a>
+                    <a href="#/categorias">Inovação</a>
+                </div>
+
+            </div>
+
+            <a href="#/cadastro">Cadastro</a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- CONTÊINER DA SPA: o JavaScript preenche este espaço -->
+
+    <main id="app">
+
+        <!-- Este aviso some sozinho quando o JavaScript funciona
+             (o roteador limpa o <main>). Se ele continuar na tela,
+             o site foi aberto sem servidor e os módulos foram bloqueados. -->
+
+        <div class="alerta">
+            <strong>Carregando...</strong>
+            Se esta mensagem não sumir, abra o site por um servidor local,
+            como a extensão Live Server do VS Code.
+        </div>
+
+    </main>
+
+
+    <!-- MODAL -->
+
+    <div class="modal"
+         id="modal"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="titulo-modal">
+
+        <div class="modal-conteudo">
+
+            <button class="fechar-modal"
+                    id="fechar-modal"
+                    aria-label="Fechar janela">
+                &times;
+            </button>
+
+            <h2 id="titulo-modal">
+                Inteligência Artificial
+            </h2>
+
+            <p>
+                A inteligência artificial está sendo utilizada
+                em diversas áreas para auxiliar na realização
+                de tarefas e no desenvolvimento de novas soluções.
+            </p>
+
+            <button class="botao-modal"
+                    id="botao-fechar">
+                Fechar
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOAST -->
+
+    <div class="toast"
+         id="toast"
+         role="status"
+         aria-live="polite">
+
+        <strong>Atualização disponível!</strong>
+
+        <span>
+            Uma nova informação foi adicionada ao TechNews.
+        </span>
+
+    </div>
+
+
+    <footer>
+
+        <p>&copy; 2026 TechNews</p>
+
+    </footer>
+
+
+    <!-- ========================================
+         PÁGINAS DA SPA (templates)
+         Não aparecem na tela. O JavaScript copia
+         o template da rota escolhida para dentro
+         do <main id="app">.
+    ======================================== -->
+
+
+    <!-- PÁGINA: INÍCIO (#/) -->
+
+    <template id="pagina-inicio">
+
+        <section id="lista-noticias">
+
+            <h2>Principais notícias</h2>
+
+
+            <!-- ALERTA -->
+
+            <div class="alerta" role="alert">
+
+                <strong>Informação:</strong>
+
+                Confira as principais novidades do mundo da tecnologia.
+
+            </div>
+
+
+            <!-- AS NOTÍCIAS SÃO INSERIDAS AQUI PELO JAVASCRIPT (lista "noticias" no script.js) -->
+
+        </section>
+
+    </template>
+
+
+    <!-- PÁGINA: CATEGORIAS (#/categorias) -->
+
+    <template id="pagina-categorias">
+
+        <section id="lista-categorias">
+
+            <h2>Categorias de Tecnologia</h2>
+
+            <!-- AS CATEGORIAS SÃO INSERIDAS AQUI PELO JAVASCRIPT (lista "categorias" no script.js) -->
+
+        </section>
+
+    </template>
+
+
+    <!-- PÁGINA: CADASTRO (#/cadastro) -->
+
+    <template id="pagina-cadastro">
+
+        <a href="#/" class="botao-voltar">&larr; Voltar</a>
+
+        <form novalidate>
+            <fieldset>
+                <legend><strong>Dados Pessoais</strong></legend>
+
+                <label for="nome">Nome Completo</label>
+                <input type="text" name="nome" id="nome" required>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>
+                <label for="data_nascimento">Data de Nascimento</label>
+                <input type="date" name="data_nascimento" id="data_nascimento" required>
+                <label for="telefone">Telefone</label>
+                <input type="tel" name="telefone" id="telefone"
+                pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}"
+                maxlength="15"
+                required>
+                <label for="cpf">CPF</label>
+                <input type="text" name="cpf" id="cpf"
+                pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
+                maxlength="14"
+                required>
+                <label for="cep">CEP</label>
+                <input type="text" name="cep" id="cep" pattern="[0-9]{5}-[0-9]{3}"
+                maxlength="9"
+                required>
+                <label for="cidade">Cidade</label>
+                <input type="text" name="cidade" id="cidade" required>
+                <label for="estado">Estado</label>
+                <select name="estado" id="estado" required>
+                    <option value="">Selecione</option>
+                    <option value="AC">Acre (AC)</option>
+                    <option value="AL">Alagoas (AL)</option>
+                    <option value="AP">Amapá (AP)</option>
+                    <option value="AM">Amazonas (AM)</option>
+                    <option value="BA">Bahia (BA)</option>
+                    <option value="CE">Ceará (CE)</option>
+                    <option value="DF">Distrito Federal (DF)</option>
+                    <option value="ES">Espírito Santo (ES)</option>
+                    <option value="GO">Goiás (GO)</option>
+                    <option value="MA">Maranhão (MA)</option>
+                    <option value="MT">Mato Grosso (MT)</option>
+                    <option value="MS">Mato Grosso do Sul (MS)</option>
+                    <option value="MG">Minas Gerais (MG)</option>
+                    <option value="PA">Pará (PA)</option>
+                    <option value="PB">Paraíba (PB)</option>
+                    <option value="PR">Paraná (PR)</option>
+                    <option value="PE">Pernambuco (PE)</option>
+                    <option value="PI">Piauí (PI)</option>
+                    <option value="RJ">Rio de Janeiro (RJ)</option>
+                    <option value="RN">Rio Grande do Norte (RN)</option>
+                    <option value="RS">Rio Grande do Sul (RS)</option>
+                    <option value="RO">Rondônia (RO)</option>
+                    <option value="RR">Roraima (RR)</option>
+                    <option value="SC">Santa Catarina (SC)</option>
+                    <option value="SP">São Paulo (SP)</option>
+                    <option value="SE">Sergipe (SE)</option>
+                    <option value="TO">Tocantins (TO)</option>
+                </select>
+                <input type="submit" value="Enviar">
+
+            </fieldset>
+        </form>
+
+    </template>
+
+
+    <!-- Biblioteca externa Day.js (datas). Deve vir ANTES do script.js. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.13/dayjs.min.js"
+            integrity="sha512-FwNWaxyfy2XlEINoSnZh1JQ5TRRtGow0D6XcmAWmYCRgvqOUTnzCxPc9uF35u5ZEpirk1uhlPVA19tflhvnW1g=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+
+    <!-- Arquivo principal: type="module" permite usar import/export -->
+    <script type="module" src="../js/script.js"></script>
+
+</body>
+
+</html>

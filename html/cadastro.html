@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend><strong>Dados Pessoais</strong></legend>
+        
+            <label for="nome">Nome Completo</label>
+            <input type="text" name="nome" id="nome" required>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required>
+            <label for="data_nascimento">Data de Nascimento</label>
+            <input type="date" name="data_nascimento" id="data_nascimento" required>
+            <label for="telefone">Telefone</label>
+            <input type="tel" name="telefone" id="telefone"
+            pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}" 
+            maxlength="15"
+            required>
+            <label for="cpf">CPF</label>
+            <input type="text" name="cpf" id="cpf"
+            pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" 
+            maxlength="14"
+            required>
+            <label for="cep">CEP</label>
+            <input type="text" name="cep" id="cep" pattern="[0-9]{5}-[0-9]{3}"
+            maxlength="9"
+            required>
+            <label for="cidade">Cidade</label>
+            <input type="text" name="cidade" id="cidade" required>
+            <label for="estado">Estado</label>
+            <select name="estado" id="estado" required>
+                <option value="">Selecione</option>
+                <option value="AC">Acre (AC)</option>
+                <option value="AL">Alagoas (AL)</option>
+                <option value="AP">Amapá (AP)</option>
+                <option value="AM">Amazonas (AM)</option>
+                <option value="BA">Bahia (BA)</option>
+                <option value="CE">Ceará (CE)</option>
+                <option value="DF">Distrito Federal (DF)</option>
+                <option value="ES">Espírito Santo (ES)</option>
+                <option value="GO">Goiás (GO)</option>
+                <option value="MA">Maranhão (MA)</option>
+                <option value="MT">Mato Grosso (MT)</option>
+                <option value="MS">Mato Grosso do Sul (MS)</option>
+                <option value="MG">Minas Gerais (MG)</option>
+                <option value="PA">Pará (PA)</option>
+                <option value="PB">Paraíba (PB)</option>
+                <option value="PR">Paraná (PR)</option>
+                <option value="PE">Pernambuco (PE)</option>
+                <option value="PI">Piauí (PI)</option>
+                <option value="RJ">Rio de Janeiro (RJ)</option>
+                <option value="RN">Rio Grande do Norte (RN)</option>
+                <option value="RS">Rio Grande do Sul (RS)</option>
+                <option value="RO">Rondônia (RO)</option>
+                <option value="RR">Roraima (RR)</option>
+                <option value="SC">Santa Catarina (SC)</option>
+                <option value="SP">São Paulo (SP)</option>
+                <option value="SE">Sergipe (SE)</option>
+                <option value="TO">Tocantins (TO)</option>
+            </select>
+            <input type="submit" value="Enviar">
+        
+        </fieldset>
+    </form>
+    <script src="../js/script.js"></script>
+</body>
+</html>

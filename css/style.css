@@ -1,0 +1,856 @@
+/* ========================================
+   DESIGN SYSTEM
+======================================== */
+
+:root {
+
+    /* Cores */
+    --cor-primaria: #711d869f;
+    --cor-secundaria: #af18d4;
+    --cor-destaque: #F9A825;
+    --cor-fundo: #F4F6F8;
+    --cor-superficie: #FFFFFF;
+    --cor-texto: #222222;
+    --cor-texto-secundario: #555555;
+    --cor-borda: #CCCCCC;
+
+    /* Feedback */
+    --cor-sucesso: #2E7D32;
+    --cor-erro: #C62828;
+
+    /* Tipografia */
+    --fonte-principal: Arial, sans-serif;
+
+    --tamanho-1: 2.5rem;
+    --tamanho-2: 2rem;
+    --tamanho-3: 1.5rem;
+    --tamanho-4: 1.125rem;
+    --tamanho-5: 1rem;
+
+    /* Espaçamentos */
+    --espaco-1: 8px;
+    --espaco-2: 16px;
+    --espaco-3: 24px;
+    --espaco-4: 32px;
+    --espaco-5: 40px;
+    --espaco-6: 48px;
+}
+
+
+/* ========================================
+   RESET
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ========================================
+   BODY
+======================================== */
+
+body {
+    font-family: var(--fonte-principal);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+
+/* ========================================
+   CABEÇALHO
+======================================== */
+
+header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-2);
+
+    background-color: var(--cor-primaria);
+    color: var(--cor-superficie);
+
+    padding: var(--espaco-4) 8%;
+}
+
+.cabecalho-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header h1 {
+    font-size: var(--tamanho-1);
+    margin-bottom: var(--espaco-1);
+}
+
+header p {
+    color: var(--cor-superficie);
+    margin-bottom: var(--espaco-3);
+    font-size: var(--tamanho-4);
+}
+
+
+/* ========================================
+   NAVEGAÇÃO
+======================================== */
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-3);
+}
+
+nav a {
+    color: var(--cor-superficie);
+    text-decoration: none;
+    font-weight: bold;
+    padding: var(--espaco-1);
+
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: var(--cor-destaque);
+}
+
+
+/* ========================================
+   MENU DROPDOWN
+======================================== */
+
+.menu-dropdown {
+    position: relative;
+}
+
+.dropdown {
+    display: none;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    min-width: 220px;
+
+    background-color: var(--cor-superficie);
+
+    padding: var(--espaco-2);
+
+    border-radius: 6px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+
+    flex-direction: column;
+    gap: var(--espaco-1);
+
+    z-index: 10;
+}
+
+.dropdown a {
+    display: block;
+    color: var(--cor-texto);
+    padding: var(--espaco-1);
+}
+
+.dropdown a:hover {
+    color: var(--cor-secundaria);
+}
+
+.menu-dropdown:hover .dropdown {
+    display: flex;
+}
+
+
+/* ========================================
+   BOTÃO HAMBÚRGUER
+======================================== */
+
+.menu-hamburguer {
+    display: none;
+
+    background: none;
+    border: none;
+
+    color: var(--cor-superficie);
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+    transition: opacity 0.2s ease;
+}
+
+.menu-hamburguer:hover {
+    opacity: 0.8;
+}
+
+.menu-hamburguer:focus {
+    outline: 2px solid var(--cor-destaque);
+    outline-offset: 3px;
+}
+
+.menu-hamburguer:active {
+    opacity: 0.6;
+}
+
+
+/* ========================================
+   CONTEÚDO PRINCIPAL
+======================================== */
+
+main {
+    width: 84%;
+    max-width: 1200px;
+
+    margin: var(--espaco-6) auto;
+}
+
+
+/* ========================================
+   GRID
+======================================== */
+
+section {
+    display: grid;
+
+    grid-template-columns: repeat(12, 1fr);
+
+    gap: var(--espaco-3);
+}
+
+section > h2 {
+    grid-column: 1 / -1;
+
+    font-size: var(--tamanho-2);
+
+    margin-bottom: var(--espaco-3);
+}
+
+
+/* ========================================
+   ALERTA
+======================================== */
+
+.alerta {
+    grid-column: 1 / -1;
+
+    background-color: #FFF3CD;
+
+    color: #664D03;
+
+    border: 1px solid #FFDA6A;
+
+    border-radius: 8px;
+
+    padding: var(--espaco-2) var(--espaco-3);
+
+    margin-bottom: var(--espaco-2);
+}
+
+
+/* ========================================
+   BADGE
+======================================== */
+
+.badge {
+    display: inline-block;
+
+    width: fit-content;
+
+    background-color: var(--cor-secundaria);
+
+    color: var(--cor-superficie);
+
+    padding: 4px 10px;
+
+    border-radius: 20px;
+
+    font-size: 0.875rem;
+
+    font-weight: bold;
+}
+
+
+/* ========================================
+   CARDS
+======================================== */
+
+article {
+    grid-column: span 4;
+
+    background-color: var(--cor-superficie);
+
+    padding: var(--espaco-3);
+
+    border: 1px solid var(--cor-borda);
+
+    border-radius: 10px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--espaco-2);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+article:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.12);
+}
+
+article h3 {
+    font-size: var(--tamanho-3);
+}
+
+article p {
+    color: var(--cor-texto-secundario);
+
+    font-size: var(--tamanho-5);
+}
+
+
+/* ========================================
+   IMAGENS
+======================================== */
+
+article img {
+    width: 100%;
+    height: 220px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+}
+
+
+/* ========================================
+   BOTÕES DOS COMPONENTES
+======================================== */
+
+.botao-modal,
+.botao-toast {
+    background-color: var(--cor-secundaria);
+
+    color: var(--cor-superficie);
+
+    border: none;
+
+    padding: 12px 16px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    font-family: var(--fonte-principal);
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.1s ease;
+}
+
+.botao-modal:hover,
+.botao-toast:hover {
+    background-color: var(--cor-primaria);
+}
+
+.botao-modal:focus,
+.botao-toast:focus {
+    outline: 2px solid var(--cor-destaque);
+
+    outline-offset: 3px;
+}
+
+.botao-modal:active,
+.botao-toast:active {
+    transform: scale(0.98);
+}
+
+
+/* ========================================
+   MODAL
+======================================== */
+
+.modal {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    align-items: center;
+    justify-content: center;
+
+    padding: var(--espaco-3);
+
+    z-index: 100;
+}
+
+.modal.ativo {
+    display: flex;
+}
+
+.modal-conteudo {
+    position: relative;
+
+    background-color: var(--cor-superficie);
+
+    width: 100%;
+    max-width: 500px;
+
+    padding: var(--espaco-4);
+
+    border-radius: 10px;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.modal-conteudo h2 {
+    margin-bottom: var(--espaco-2);
+
+    color: var(--cor-secundaria);
+}
+
+.modal-conteudo p {
+    margin-bottom: var(--espaco-3);
+
+    color: var(--cor-texto-secundario);
+}
+
+.fechar-modal {
+    position: absolute;
+
+    top: 12px;
+    right: 16px;
+
+    background: none;
+
+    border: none;
+
+    font-size: 28px;
+
+    color: var(--cor-texto-secundario);
+
+    cursor: pointer;
+}
+
+.fechar-modal:hover {
+    color: var(--cor-erro);
+}
+
+.fechar-modal:focus {
+    outline: 2px solid var(--cor-destaque);
+
+    outline-offset: 3px;
+}
+
+
+/* ========================================
+   TOAST
+======================================== */
+
+.toast {
+    position: fixed;
+
+    right: 24px;
+    bottom: 24px;
+
+    width: 320px;
+
+    background-color: var(--cor-superficie);
+
+    border-left: 5px solid var(--cor-sucesso);
+
+    padding: var(--espaco-2) var(--espaco-3);
+
+    border-radius: 8px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+
+    transform: translateY(150%);
+
+    opacity: 0;
+
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+
+    z-index: 200;
+}
+
+.toast.ativo {
+    transform: translateY(0);
+
+    opacity: 1;
+}
+
+.toast strong {
+    color: var(--cor-sucesso);
+}
+
+.toast span {
+    color: var(--cor-texto-secundario);
+}
+
+
+/* ========================================
+   FORMULÁRIO
+======================================== */
+
+form {
+    background-color: var(--cor-superficie);
+
+    padding: var(--espaco-4);
+
+    border: 1px solid var(--cor-borda);
+
+    border-radius: 10px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+fieldset {
+    border: none;
+}
+
+legend {
+    font-size: var(--tamanho-2);
+    font-weight: bold;
+
+    margin-bottom: var(--espaco-3);
+}
+
+label {
+    display: block;
+
+    margin-top: var(--espaco-2);
+    margin-bottom: var(--espaco-1);
+
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid var(--cor-borda);
+
+    border-radius: 6px;
+
+    font-family: var(--fonte-principal);
+
+    font-size: var(--tamanho-5);
+
+    background-color: var(--cor-superficie);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* ========================================
+   FOCO DOS CAMPOS
+======================================== */
+
+input:focus,
+select:focus {
+    outline: 2px solid var(--cor-destaque);
+
+    border-color: var(--cor-secundaria);
+
+    box-shadow: 0 0 0 3px rgba(249, 168, 37, 0.2);
+}
+
+
+/* ========================================
+   VALIDAÇÃO DOS CAMPOS
+   (as classes são adicionadas pelo JavaScript)
+======================================== */
+
+input.campo-sucesso,
+select.campo-sucesso {
+    border-color: var(--cor-sucesso);
+}
+
+input.campo-erro,
+select.campo-erro {
+    border-color: var(--cor-erro);
+}
+
+.mensagem-erro {
+    display: block;
+
+    margin-top: var(--espaco-1);
+
+    color: var(--cor-erro);
+
+    font-size: 0.875rem;
+}
+
+
+/* ========================================
+   BOTÃO DE ENVIO
+======================================== */
+
+input[type="submit"] {
+    margin-top: var(--espaco-3);
+
+    background-color: var(--cor-secundaria);
+
+    color: var(--cor-superficie);
+
+    border: none;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.1s ease,
+        opacity 0.2s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--cor-primaria);
+}
+
+input[type="submit"]:focus {
+    outline: 2px solid var(--cor-destaque);
+
+    outline-offset: 3px;
+}
+
+input[type="submit"]:active {
+    transform: scale(0.98);
+
+    opacity: 0.8;
+}
+
+input[type="submit"]:disabled {
+    background-color: var(--cor-borda);
+
+    color: var(--cor-texto-secundario);
+
+    cursor: not-allowed;
+
+    opacity: 0.6;
+}
+
+
+/* ========================================
+   BOTÃO VOLTAR
+======================================== */
+
+.botao-voltar {
+    display: inline-block;
+
+    margin-bottom: var(--espaco-3);
+
+    padding: 12px 16px;
+
+    border: 2px solid var(--cor-secundaria);
+
+    border-radius: 6px;
+
+    color: var(--cor-secundaria);
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.1s ease;
+}
+
+.botao-voltar:hover {
+    background-color: var(--cor-secundaria);
+
+    color: var(--cor-superficie);
+}
+
+.botao-voltar:focus {
+    outline: 2px solid var(--cor-destaque);
+
+    outline-offset: 3px;
+}
+
+.botao-voltar:active {
+    transform: scale(0.98);
+}
+
+
+/* ========================================
+   RODAPÉ
+======================================== */
+
+footer {
+    background-color: var(--cor-primaria);
+
+    color: var(--cor-superficie);
+
+    text-align: center;
+
+    padding: var(--espaco-4);
+
+    margin-top: var(--espaco-6);
+}
+
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 1200px) {
+
+    main {
+        width: 88%;
+    }
+}
+
+
+@media (max-width: 1024px) {
+
+    section {
+        grid-template-columns: repeat(8, 1fr);
+    }
+
+    article {
+        grid-column: span 4;
+    }
+}
+
+
+@media (max-width: 900px) {
+
+    section {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    article {
+        grid-column: span 3;
+    }
+
+    main {
+        width: 90%;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .menu-hamburguer {
+        display: block;
+    }
+
+    nav {
+        display: none;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: var(--espaco-1);
+    }
+
+    nav.ativo {
+        display: flex;
+    }
+
+    .menu-dropdown {
+        width: 100%;
+    }
+
+    .dropdown {
+        position: static;
+
+        width: 100%;
+
+        box-shadow: none;
+
+        margin-top: var(--espaco-1);
+    }
+
+    .menu-dropdown:hover .dropdown {
+        display: none;
+    }
+
+    .menu-dropdown.ativo .dropdown {
+        display: flex;
+    }
+
+    section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    article {
+        grid-column: span 1;
+    }
+
+    .alerta {
+        grid-column: 1 / -1;
+    }
+
+    .toast {
+        right: 16px;
+        left: 16px;
+
+        width: auto;
+
+        bottom: 16px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    header {
+        padding: var(--espaco-3);
+    }
+
+    header h1 {
+        font-size: var(--tamanho-2);
+    }
+
+    main {
+        width: 90%;
+
+        margin: var(--espaco-4) auto;
+    }
+
+    section {
+        grid-template-columns: 1fr;
+    }
+
+    article {
+        grid-column: 1;
+    }
+
+    form {
+        padding: var(--espaco-3);
+    }
+
+    .modal-conteudo {
+        padding: var(--espaco-3);
+    }
+}
