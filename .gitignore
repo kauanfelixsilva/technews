@@ -5,3 +5,8 @@
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Dependências e build do Vite (gerados por "npm install" e "npm run build";
+# não precisam ir para o repositório, cada pessoa gera os seus)
+node_modules/
+dist/

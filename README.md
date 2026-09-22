@@ -32,9 +32,9 @@ projetoOng/
 
 O `index.html` é a única página que a SPA usa: o conteúdo de Início, Categorias e Cadastro é injetado dinamicamente dentro dela. Os arquivos `projetos.html` e `cadastro.html` são versões antigas, de antes da SPA, mantidas no repositório mas sem link ativo no menu.
 
-## Como instalar e executar
+## Como instalar e executar (desenvolvimento)
 
-O projeto não tem dependências para instalar (não usa `npm`). Ele precisa apenas de um servidor local, porque o `js/script.js` é carregado como módulo ES (`import`/`export`), e o navegador bloqueia módulos quando o arquivo é aberto direto (`file:///...`).
+Para editar o projeto sem passar pelo build, ele precisa apenas de um servidor local, porque o `js/script.js` é carregado como módulo ES (`import`/`export`), e o navegador bloqueia módulos quando o arquivo é aberto direto (`file:///...`).
 
 1. Clone o repositório:
    ```bash
@@ -46,6 +46,18 @@ O projeto não tem dependências para instalar (não usa `npm`). Ele precisa ape
 5. O site abre em um endereço como `http://127.0.0.1:5500/html/index.html`.
 
 Se o site abrir com a tela vazia mostrando "Carregando...", significa que ele foi aberto sem servidor (com duplo clique no arquivo). Repita o passo 4.
+
+## Build de produção
+
+O projeto usa o **Vite** como bundler, para minificar CSS, JavaScript e HTML antes do deploy. Requer [Node.js](https://nodejs.org/) instalado.
+
+```bash
+npm install       # instala o Vite (só na primeira vez)
+npm run build     # gera a pasta dist/, com os arquivos minificados
+npm run preview   # serve a pasta dist/ localmente, para conferir o resultado
+```
+
+A configuração fica em `vite.config.js`. A pasta `dist/` não é versionada (está no `.gitignore`): ela é gerada de novo a cada build, inclusive no serviço de deploy.
 
 ## Funcionalidades
 
