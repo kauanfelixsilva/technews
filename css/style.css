@@ -152,6 +152,12 @@ nav a:hover {
     color: var(--cor-destaque);
 }
 
+nav a:focus {
+    outline: 2px solid var(--cor-destaque);
+    outline-offset: 3px;
+    color: var(--cor-destaque);
+}
+
 
 /* ========================================
    MENU DROPDOWN
@@ -194,7 +200,18 @@ nav a:hover {
     color: var(--cor-secundaria);
 }
 
-.menu-dropdown:hover .dropdown {
+.dropdown a:focus {
+    outline: 2px solid var(--cor-destaque);
+    outline-offset: -2px;
+    color: var(--cor-secundaria);
+}
+
+/* :focus-within abre o submenu também pelo teclado (Tab), não só
+   com o mouse. Sem isso, quem navega só por teclado nunca via
+   os itens de dentro do dropdown no desktop. */
+
+.menu-dropdown:hover .dropdown,
+.menu-dropdown:focus-within .dropdown {
     display: flex;
 }
 
@@ -827,7 +844,11 @@ footer {
         margin-top: var(--espaco-1);
     }
 
-    .menu-dropdown:hover .dropdown {
+    /* No mobile, quem manda é a classe "ativo" (JS), não hover
+       nem foco — por isso os dois voltam a ficar desligados aqui */
+
+    .menu-dropdown:hover .dropdown,
+    .menu-dropdown:focus-within .dropdown {
         display: none;
     }
 

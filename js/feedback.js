@@ -42,7 +42,7 @@ export function abrirModal(evento) {
 
     }
 
-    document.addEventListener("keydown", fecharModalComEsc);
+    document.addEventListener("keydown", gerenciarTecladoDoModal);
 
 }
 
@@ -59,7 +59,7 @@ export function fecharModal() {
 
     modal.classList.remove("ativo");
 
-    document.removeEventListener("keydown", fecharModalComEsc);
+    document.removeEventListener("keydown", gerenciarTecladoDoModal);
 
     /* Devolve o foco para quem abriu o modal, se esse elemento
        ainda existir na página (pode ter sumido numa troca de rota) */
@@ -75,11 +75,58 @@ export function fecharModal() {
 }
 
 
-function fecharModalComEsc(evento) {
+/* Busca os elementos que podem receber foco dentro do modal
+   (para o Tab "prender" o foco só nesses elementos) */
+
+function elementosFocaveisDoModal(modal) {
+
+    const seletor = 'button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
+    return Array.from(modal.querySelectorAll(seletor));
+
+}
+
+
+function gerenciarTecladoDoModal(evento) {
 
     if (evento.key === "Escape") {
 
         fecharModal();
+
+        return;
+
+    }
+
+    /* Trap de foco: com Tab, o foco não sai do modal. Ao chegar
+       no último elemento, o próximo Tab volta para o primeiro
+       (e o contrário com Shift+Tab). */
+
+    if (evento.key === "Tab") {
+
+        const modal = document.getElementById("modal");
+
+        const focaveis = elementosFocaveisDoModal(modal);
+
+        if (focaveis.length === 0) {
+
+            return;
+
+        }
+
+        const primeiro = focaveis[0];
+        const ultimo = focaveis[focaveis.length - 1];
+
+        if (evento.shiftKey && document.activeElement === primeiro) {
+
+            evento.preventDefault();
+            ultimo.focus();
+
+        } else if (!evento.shiftKey && document.activeElement === ultimo) {
+
+            evento.preventDefault();
+            primeiro.focus();
+
+        }
 
     }
 
