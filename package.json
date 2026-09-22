@@ -1,0 +1,15 @@
+{
+  "name": "technews",
+  "private": true,
+  "version": "1.0.0",
+  "description": "TechNews - site de notícias de tecnologia (SPA em HTML/CSS/JS puro), projeto acadêmico de Desenvolvimento Front-end.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "html-minifier-terser": "^7.2.0",
+    "vite": "^5.4.11"
+  }
+}
