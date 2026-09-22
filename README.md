@@ -57,7 +57,9 @@ npm run build     # gera a pasta dist/, com os arquivos minificados
 npm run preview   # serve a pasta dist/ localmente, para conferir o resultado
 ```
 
-A configuração fica em `vite.config.js`. A pasta `dist/` não é versionada (está no `.gitignore`): ela é gerada de novo a cada build, inclusive no serviço de deploy.
+A configuração fica em `vite.config.mjs`. A pasta `dist/` não é versionada (está no `.gitignore`): ela é gerada de novo a cada build, inclusive no serviço de deploy.
+
+As imagens de `imagens/` são importadas em `js/dados.js` com `?w=1000&format=webp`, usando o plugin `vite-imagetools`: a build redimensiona e converte cada imagem para WebP automaticamente, sem precisar editar os arquivos originais.
 
 ## Funcionalidades
 

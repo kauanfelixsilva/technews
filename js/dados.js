@@ -6,9 +6,9 @@
    Sem isso, elas não apareceriam no site publicado.
 ======================================== */
 
-import imagemIA from "../imagens/ia.png.jpg";
-import imagemProgramacao from "../imagens/programação.jpg";
-import imagemSeguranca from "../imagens/segurançadigital.jpg";
+import imagemIA from "../imagens/ia.png.jpg?w=1000&format=webp&as=src";
+import imagemProgramacao from "../imagens/programação.jpg?w=1000&format=webp&as=src";
+import imagemSeguranca from "../imagens/segurançadigital.jpg?w=1000&format=webp&as=src";
 
 
 /* ========================================
