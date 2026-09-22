@@ -7,15 +7,42 @@
 
 /* ---------- MODAL ---------- */
 
-export function abrirModal() {
+/* Guarda quem estava com foco antes de abrir o modal,
+   para devolver o foco a esse elemento ao fechar. */
+
+let elementoAnteriorAoFoco = null;
+
+
+export function abrirModal(evento) {
 
     const modal = document.getElementById("modal");
 
-    if (modal) {
+    if (!modal) {
 
-        modal.classList.add("ativo");
+        return;
 
     }
+
+    /* Se foi um clique num botão, guarda o botão. Senão, guarda
+       o que estava focado no momento (ex.: chamada pelo teclado). */
+
+    elementoAnteriorAoFoco = (evento && evento.currentTarget) || document.activeElement;
+
+    modal.classList.add("ativo");
+
+    /* Move o foco para dentro do modal, no botão de fechar.
+       Sem isso, quem navega pelo teclado continuaria "atrás"
+       do modal, numa página que parece ter mudado sem avisar. */
+
+    const botaoFechar = document.getElementById("fechar-modal");
+
+    if (botaoFechar) {
+
+        botaoFechar.focus();
+
+    }
+
+    document.addEventListener("keydown", fecharModalComEsc);
 
 }
 
@@ -24,9 +51,35 @@ export function fecharModal() {
 
     const modal = document.getElementById("modal");
 
-    if (modal) {
+    if (!modal) {
 
-        modal.classList.remove("ativo");
+        return;
+
+    }
+
+    modal.classList.remove("ativo");
+
+    document.removeEventListener("keydown", fecharModalComEsc);
+
+    /* Devolve o foco para quem abriu o modal, se esse elemento
+       ainda existir na página (pode ter sumido numa troca de rota) */
+
+    if (elementoAnteriorAoFoco && document.contains(elementoAnteriorAoFoco)) {
+
+        elementoAnteriorAoFoco.focus();
+
+    }
+
+    elementoAnteriorAoFoco = null;
+
+}
+
+
+function fecharModalComEsc(evento) {
+
+    if (evento.key === "Escape") {
+
+        fecharModal();
 
     }
 
