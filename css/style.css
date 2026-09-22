@@ -61,6 +61,42 @@ body {
 
 
 /* ========================================
+   PULAR PARA O CONTEÚDO (acessibilidade)
+   Fica escondido fora da tela e só aparece
+   quando recebe foco pelo teclado (Tab).
+======================================== */
+
+.pular-conteudo {
+    position: absolute;
+
+    top: -999px;
+    left: 0;
+
+    background-color: var(--cor-secundaria);
+
+    color: var(--cor-superficie);
+
+    padding: var(--espaco-2) var(--espaco-3);
+
+    border-radius: 0 0 6px 0;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    z-index: 1000;
+}
+
+.pular-conteudo:focus {
+    top: 0;
+
+    outline: 2px solid var(--cor-destaque);
+
+    outline-offset: -2px;
+}
+
+
+/* ========================================
    CABEÇALHO
 ======================================== */
 

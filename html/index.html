@@ -10,6 +10,8 @@
 
 <body>
 
+    <a href="#app" class="pular-conteudo">Pular para o conteúdo principal</a>
+
     <header>
 
         <div class="cabecalho-topo">
@@ -21,7 +23,9 @@
 
             <button class="menu-hamburguer"
                     id="botao-menu"
-                    aria-label="Abrir menu">
+                    aria-label="Abrir menu"
+                    aria-controls="menu"
+                    aria-expanded="false">
                 ☰
             </button>
 
@@ -33,9 +37,12 @@
 
             <div class="menu-dropdown">
 
-                <a href="#/categorias">Categorias ▾</a>
+                <a href="#/categorias"
+                   aria-haspopup="true"
+                   aria-expanded="false"
+                   aria-controls="submenu-categorias">Categorias ▾</a>
 
-                <div class="dropdown">
+                <div class="dropdown" id="submenu-categorias">
                     <a href="#/categorias">Inteligência Artificial</a>
                     <a href="#/categorias">Programação</a>
                     <a href="#/categorias">Segurança Digital</a>
