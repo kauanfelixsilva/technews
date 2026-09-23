@@ -2,6 +2,8 @@
 
 Site de notícias de tecnologia, desenvolvido como projeto acadêmico da disciplina de Desenvolvimento Front-end. É uma Single Page Application (SPA) construída com HTML, CSS e JavaScript puro (sem frameworks), aplicando Design System, CSS Grid, Flexbox, responsividade, roteamento por hash, templates dinâmicos, validação de formulário e persistência com `localStorage`.
 
+**Site publicado:** https://kauanfelixsilva.github.io/technews/
+
 ## Estrutura de pastas
 
 ```text
@@ -60,6 +62,12 @@ npm run preview   # serve a pasta dist/ localmente, para conferir o resultado
 A configuração fica em `vite.config.mjs`. A pasta `dist/` não é versionada (está no `.gitignore`): ela é gerada de novo a cada build, inclusive no serviço de deploy.
 
 As imagens de `imagens/` são importadas em `js/dados.js` com `?w=1000&format=webp`, usando o plugin `vite-imagetools`: a build redimensiona e converte cada imagem para WebP automaticamente, sem precisar editar os arquivos originais.
+
+## Deploy (CI/CD)
+
+O site é publicado automaticamente no **GitHub Pages** a cada `push` na branch `main`, pelo workflow `.github/workflows/deploy.yml` (GitHub Actions). Nenhum passo manual é necessário: o workflow instala as dependências, roda `npm run build` e publica o conteúdo de `dist/`.
+
+Como o `root` do Vite é a pasta `html/`, o build coloca o `index.html` na raiz de `dist/` (não em `dist/html/`), que é onde o GitHub Pages espera encontrar a página inicial.
 
 ## Funcionalidades
 
