@@ -30,12 +30,22 @@ function minificarHtml() {
 /* ========================================
    CONFIGURAÇÃO DO VITE
    O projeto segue a estrutura exigida pela disciplina
-   (html/, css/, js/, imagens/ como pastas irmãs), então
-   a raiz do Vite continua sendo a raiz do projeto — só
-   apontamos qual HTML é o ponto de entrada da build.
+   (html/, css/, js/, imagens/ como pastas irmãs).
+
+   A raiz do Vite (root) é a pasta html/: é isso que faz o
+   build colocar o index.html na RAIZ de dist/ (dist/index.html),
+   em vez de dist/html/index.html. Sem isso, o GitHub Pages (e a
+   maioria dos serviços de deploy) não acharia a página inicial
+   no endereço principal do site.
+
+   Os caminhos ../css, ../js e ../imagens continuam funcionando:
+   o Vite resolve os <link>/<script>/import a partir da pasta
+   onde o arquivo HTML está no disco, não a partir da "root".
 ======================================== */
 
 export default defineConfig({
+
+    root: resolve(__dirname, "html"),
 
     /* base relativa: o site funciona em qualquer subpasta
        de domínio, sem precisar saber o link final do deploy */
@@ -44,10 +54,7 @@ export default defineConfig({
     plugins: [imagetools(), minificarHtml()],
 
     build: {
-        outDir: "dist",
-
-        rollupOptions: {
-            input: resolve(__dirname, "html/index.html"),
-        },
+        outDir: resolve(__dirname, "dist"),
+        emptyOutDir: true,
     },
 });

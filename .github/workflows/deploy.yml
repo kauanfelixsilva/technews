@@ -1,0 +1,58 @@
+name: Deploy para o GitHub Pages
+
+# CI/CD: toda vez que a branch main recebe um push (ou seja, toda
+# vez que uma release é mesclada, seguindo o GitFlow do projeto),
+# este workflow builda o site com o Vite e publica o resultado
+# automaticamente, sem precisar de nenhum passo manual.
+
+on:
+  push:
+    branches: [main]
+
+  # Permite rodar manualmente pela aba "Actions" do GitHub, se precisar
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Evita duas publicações rodando ao mesmo tempo
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o código do repositório
+        uses: actions/checkout@v4
+
+      - name: Instalar o Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar as dependências
+        run: npm ci
+
+      - name: Gerar a build de produção (Vite)
+        run: npm run build
+
+      - name: Preparar o resultado para o GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
