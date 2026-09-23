@@ -11,11 +11,13 @@
    formulario.js    -> junta validação + rascunho + toast
    menu.js          -> menu hambúrguer e dropdown
    feedback.js      -> modal e toast
+   tema.js          -> alternar e lembrar o modo claro/escuro
    roteador.js      -> troca de páginas da SPA
 ======================================== */
 
 import { iniciarMenu, fecharMenu } from "./menu.js";
 import { iniciarModal, fecharModal } from "./feedback.js";
+import { iniciarTema } from "./tema.js";
 import { preencherListas, ativarBotoesDosCards } from "./cards.js";
 import { ativarMascaras } from "./mascaras.js";
 import { iniciarFormulario } from "./formulario.js";
@@ -26,6 +28,7 @@ import { iniciarRoteador } from "./roteador.js";
 
 iniciarMenu();
 iniciarModal();
+iniciarTema();
 
 
 /* Parte que muda com a página (dentro do <main>): precisa ser

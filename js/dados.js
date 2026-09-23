@@ -1,4 +1,17 @@
 /* ========================================
+   IMAGENS
+   Importar (em vez de escrever o caminho como texto)
+   é o que permite ao Vite enxergar essas imagens,
+   incluí-las na build e otimizar/renomear o arquivo.
+   Sem isso, elas não apareceriam no site publicado.
+======================================== */
+
+import imagemIA from "../imagens/ia.png.jpg?w=1000&format=webp&as=src";
+import imagemProgramacao from "../imagens/programação.jpg?w=1000&format=webp&as=src";
+import imagemSeguranca from "../imagens/segurançadigital.jpg?w=1000&format=webp&as=src";
+
+
+/* ========================================
    DADOS DOS CARDS
    Só guarda informação, não mexe na tela.
    (para mudar ou adicionar um card, basta
@@ -10,7 +23,7 @@ export const noticias = [
         categoria: "Inteligência Artificial",
         titulo: "Inteligência Artificial ganha novos recursos",
         resumo: "Novas ferramentas de inteligência artificial estão trazendo recursos para facilitar tarefas do dia a dia.",
-        imagem: "../imagens/ia.png.jpg",
+        imagem: imagemIA,
         alt: "Representação de inteligência artificial",
         botao: { tipo: "modal", texto: "Saiba mais" }
     },
@@ -18,7 +31,7 @@ export const noticias = [
         categoria: "Programação",
         titulo: "Novidades no desenvolvimento de software",
         resumo: "Novas tecnologias estão ajudando desenvolvedores a criar aplicações mais modernas e eficientes.",
-        imagem: "../imagens/programação.jpg",
+        imagem: imagemProgramacao,
         alt: "Código de programação em uma tela",
         botao: { tipo: "toast", texto: "Ver atualização" }
     },
@@ -26,7 +39,7 @@ export const noticias = [
         categoria: "Segurança Digital",
         titulo: "Segurança digital ganha importância",
         resumo: "Empresas e usuários estão cada vez mais atentos à proteção de dados e à segurança na internet.",
-        imagem: "../imagens/segurançadigital.jpg",
+        imagem: imagemSeguranca,
         alt: "Imagem relacionada à segurança digital",
         botao: null
     }
